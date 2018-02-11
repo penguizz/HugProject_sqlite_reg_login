@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">HugProject</string>
+    <string name="hint_fname">ชื่อ</string>
+    <string name="hint_lname">นามสกุล</string>
+    <string name="hint_parent_fname">ชื่อผู้ปกครอง</string>
+    <string name="hint_parent_lname">นามสกุลผู้ปกครอง</string>
+    <string name="hint_email">อีเมลผู้ปกครอง</string>
+    <string name="hint_phone">เบอร์โทรศัพท์มือถือ</string>
+    <string name="hint_parent_phone">เบอร์โทรศัพท์มือถือผู้ปกครอง</string>
+    <string name="hint_password">รหัสผ่าน</string>
+    <string name="hint_confirm_password">ยืนยันรหัสผ่าน</string>
+    <string name="text_login">เข้าสู่ระบบ</string>
+    <string name="text_register">ลงทะเบียน</string>
+    <string name="error_message_name">กรุณากรอกชื่อ</string>
+    <string name="error_message_lname">กรุณากรอกนามสกุล</string>
+    <string name="error_message_phone">กรุณากรอกเบอร์โทรศัพท์มือถือ</string>
+    <string name="error_message_email">กรุณาตรวจสอบอีเมล</string>
+    <string name="error_message_password">กรุณากรอกรหัสผ่าน</string>
+    <string name="success_message">ลงทะเบียนสำเร็จ</string>
+    <string name="text_not_member">ยังไม่มีบัญชีใช่ไหม? สมัครสมาชิก</string>
+    <string name="text_already_member">Already a member? Login</string>
+    <string name="error_email_exists">Email Already Exists</string>
+    <string name="error_password_match">รหัสผ่านไม่ตรงกัน</string>
+    <string name="error_valid_email_password">เบอร์โทรศัพท์ หรือรหัสผ่านผิด</string>
+    <string name="text_member">Already a member? Login</string>
+
+</resources>
