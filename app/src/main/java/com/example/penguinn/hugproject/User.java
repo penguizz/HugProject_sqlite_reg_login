@@ -5,7 +5,6 @@ package com.example.penguinn.hugproject;
  */
 public class User {
 
-    private int id;
     private String stu_fname;
     private String stu_lname;
     private String phone;
@@ -16,20 +15,31 @@ public class User {
     private String parent_phone;
     private String parent_email;
 
+    private double latitude;
+    private double longitude;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
     public String getStu_lname() {
         return stu_lname;
     }
 
     public void setStu_lname(String stu_lname) {
         this.stu_lname = stu_lname;
-    }
-
-    public int getId(){
-        return id;
-    }
-
-    public void setId(int id){
-        this.id = id;
     }
 
     public String getStu_fname(){
@@ -49,7 +59,7 @@ public class User {
     }
 
     public String getPassword(){
-       return password;
+        return password;
     }
 
     public void setPassword(String password){

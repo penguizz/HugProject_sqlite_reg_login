@@ -34,7 +34,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().hide();
 
         initViews();
         initListeners();
@@ -71,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 verifyFromSQLite();
                 break;
             case R.id.textViewLinkRegister:
-                Intent intentRegister = new Intent(getApplicationContext(), RegisterActivity.class);
+                Intent intentRegister = new Intent(getApplicationContext(), FirstActivity.class);
                 startActivity(intentRegister);
                 break;
         }
@@ -90,8 +89,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         if (databaseHelper.checkUser(textInputEditTextPhone.getText().toString().trim()
                 , textInputEditTextPassword.getText().toString().trim())) {
-            Intent accountsIntent = new Intent(activity, MainActivity.class);
-            accountsIntent.putExtra("EMAIL", textInputEditTextPhone.getText().toString().trim());
+            Intent accountsIntent = new Intent(activity,MapsActivity.class);
+            accountsIntent.putExtra("phone", textInputEditTextPhone.getText().toString().trim());
             emptyInputEditText();
             startActivity(accountsIntent);
         } else {
