@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -101,6 +102,12 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        // Permission StrictMode
+        if (android.os.Build.VERSION.SDK_INT > 9) {
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.setThreadPolicy(policy);
+        }
+
         initViews();
         initListeners();
         initObjects();
@@ -165,6 +172,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     private void postDataToSQLite() {
         final AlertDialog.Builder ad = new AlertDialog.Builder(this);
+
+        ad.setTitle("Error! ");
+        ad.setIcon(android.R.drawable.btn_star_big_on);
+        ad.setPositiveButton("Close", null);
+
         if (!inputValidation.isInputEditTextFilled(textInputEditTextFirstName, textInputLayoutFirstName, getString(R.string.error_message_name))) {
             return;
         }
@@ -236,11 +248,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             emptyInputEditText();
             startActivity(accountsIntent);
 
-//            emptyInputEditText();
-//            Intent intent = new Intent(RegisterActivity.this, MapsActivity.class);
-//            startActivity(intent);
-
-
         } else {
             // Snack Bar tแนo show error message that record already exists
             Snackbar.make(nestedScrollView, getString(R.string.error_email_exists), Snackbar.LENGTH_LONG).show();
@@ -249,8 +256,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // Dialog
 
-        String url = "http://192.168.43.117/HugProject/view/saveAddData.php";
-
+        String url = "http://172.27.106.219/HugProject/view/saveAddData.php";
 
         List<NameValuePair> params = new ArrayList<NameValuePair>();
         params.add(new BasicNameValuePair("stu_first_name", textInputEditTextFirstName.getText().toString()));
@@ -262,28 +268,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         params.add(new BasicNameValuePair("parent_last_name", textInputEditTextParentLastName.getText().toString()));
         params.add(new BasicNameValuePair("parent_phone", textInputEditTextParentPhone.getText().toString()));
         params.add(new BasicNameValuePair("parent_email", textInputEditTextParentEmail.getText().toString()));
-
-
-        JSONObject contactsObj = new JSONObject();
-
-        JSONArray contactsArray = new JSONArray();
-
-        try {
-            for (int i = 0; i < params.size(); i++) {
-                JSONObject contact = new JSONObject();
-                contact.put("ContactToken", params.get(i));
-                contactsArray.put(i, contact);
-            }
-
-            contactsObj.put("contacts", contactsArray);
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        String jsonStr = contactsObj.toString();
-        Log.e("CONTACTS", jsonStr);
-
-        //////////Mapactivitygเลบ ง่วงแล้ว!!!!!!!!
 
 
         /** Get result from Server (Return the JSON Code)
@@ -331,9 +315,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             textInputEditTextParentEmail.setText("");
 
         }
-
-
-
     }
 
         public String getHttpPost(String url,List<NameValuePair> params) {
